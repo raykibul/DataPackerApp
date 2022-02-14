@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.datapacker.surveyor.data.Repository
+import com.datapacker.surveyor.model.LoadingOrAlert
 import com.datapacker.surveyor.model.LoginBody
 import com.datapacker.surveyor.model.Surveyor
 import com.datapacker.surveyor.model.Token
@@ -16,7 +17,7 @@ class LoginViewModel( ) : ViewModel() {
 
   val parsedToken : MutableLiveData<Response<Token>> = MutableLiveData()
   val surveyor : MutableLiveData<Response<Surveyor>> = MutableLiveData()
-
+  val alertTracker: MutableLiveData<LoadingOrAlert> = MutableLiveData()
   var repository = Repository()
   var TAG="LOGINVIEWMODEL"
 

@@ -9,5 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="while_low">#B4FFFFFF</color>
     <color name="grey">#f7f7f7</color>
+    <color name="error">#B80A5B</color>
+    <color name="success">#06E6D1</color>
+    <color name="failed">#FFF9A825</color>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.datapacker.surveyor.ui.main
+package com.datapacker.surveyor.ui.home
 
 import androidx.lifecycle.ViewModel
 

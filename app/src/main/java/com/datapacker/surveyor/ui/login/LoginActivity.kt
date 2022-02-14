@@ -2,7 +2,6 @@ package com.datapacker.surveyor.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,11 +10,7 @@ import androidx.lifecycle.Observer
 import com.datapacker.surveyor.MainActivity
 import com.datapacker.surveyor.data.Repository
 import com.datapacker.surveyor.databinding.ActivityLoginBinding
-import com.datapacker.surveyor.model.Constant
-import com.datapacker.surveyor.model.LoginBody
-import com.datapacker.surveyor.model.Save
-import com.datapacker.surveyor.model.Token
-
+import com.datapacker.surveyor.model.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -39,8 +34,25 @@ class LoginActivity : AppCompatActivity() {
 
         var savedToken = Save.getString(Constant.TOKENSAVE,this)
 
+        loginViewModel.surveyor.observe(this, Observer {response->
+
+            if (response.isSuccessful&& response !=null){
+                Loading.stopLoading()
+                startActivity(Intent(this, MainActivity::class.java));
+                finish()
+
+            }else{
+                Loading.stopLoading()
+                MyAlert.error("সার্ভার সমস্যাঃ কোড "+response.code(),"আপনার লগিন সফল হয় নি। দয়া করে একটু পরে আবার চেষ্টা করুন",this)
+            }
+        })
         if(savedToken!=null){
+
+            var token = Token.getInstance()
+            token?.access=savedToken
+            Loading.startLoading(this,"সার্ভেয়র এর ডাটা লোড হচ্ছে ...")
             loginViewModel.loadSurveyor()
+
 
         }else{
             bd.emailTextview.setText("al@gmail.com")
@@ -49,24 +61,17 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-        loginViewModel.surveyor.observe(this, Observer {response->
 
-            Log.e(TAG, "onCreate: response"+response + response.code())
-
-            if (response.isSuccessful&& response !=null){
-
-                startActivity(Intent(this, MainActivity::class.java));
-                finish()
-           }
-        })
 
 
 
         loginViewModel.parsedToken.observe(this, Observer {
+            Loading.stopLoading()
 
             if(it==null){
                 Toast.makeText(this,"null response",Toast.LENGTH_SHORT).show()
             }
+
         if (it.isSuccessful){
                 Toast.makeText(this,"SUCCESS",Toast.LENGTH_SHORT).show()
                 var token : Token? = it.body()
@@ -91,9 +96,11 @@ class LoginActivity : AppCompatActivity() {
 
 
         bd.loginButton.setOnClickListener {
+
             if(bd.passwordTextVIew.text.toString()==""||bd.emailTextview.text.toString()==""){
                 Toast.makeText(this,"দয়া করে সব ইনপুট পুরন করুন ",Toast.LENGTH_SHORT).show()
             }else{
+                Loading.startLoading(this,"লগ-ইন ডাটা যাচাই করা হচ্ছে...")
                var loginBody = LoginBody(bd.emailTextview.text.toString(),bd.passwordTextVIew.text.toString())
                loginViewModel.parseToken(loginBody)
 
