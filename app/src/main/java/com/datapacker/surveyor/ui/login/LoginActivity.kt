@@ -8,13 +8,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
+import com.datapacker.surveyor.MainActivity
 import com.datapacker.surveyor.data.Repository
 import com.datapacker.surveyor.databinding.ActivityLoginBinding
 import com.datapacker.surveyor.model.Constant
 import com.datapacker.surveyor.model.LoginBody
 import com.datapacker.surveyor.model.Save
 import com.datapacker.surveyor.model.Token
-import com.datapacker.surveyor.ui.MainActivity
+
 
 
 class LoginActivity : AppCompatActivity() {
@@ -54,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (response.isSuccessful&& response !=null){
 
-                startActivity(Intent(this,MainActivity::class.java));
+                startActivity(Intent(this, MainActivity::class.java));
                 finish()
            }
         })

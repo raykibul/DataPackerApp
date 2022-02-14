@@ -7,6 +7,8 @@
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/drawable/rounded_corner.xml" value="0.2942708333333333" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/main_activity.xml" value="0.33125" />
+        <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/main_fragment.xml" value="0.33125" />
       </map>
     </option>
   </component>

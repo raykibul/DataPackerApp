@@ -28,7 +28,7 @@ object RetrofitInstance {
 
         Retrofit.Builder()
             .client(client)
-            .baseUrl("https://b1c3-103-126-20-42.ngrok.io")
+            .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
