@@ -1,4 +1,4 @@
-package com.datapacker.surveyor.model
+package com.datapacker.surveyor.data.model
 
 data class LoadingOrAlert(
     var title:String?,

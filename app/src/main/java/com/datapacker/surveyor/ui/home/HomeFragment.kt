@@ -1,27 +1,30 @@
 package com.datapacker.surveyor.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.datapacker.surveyor.R
+import com.datapacker.surveyor.data.model.*
 import com.datapacker.surveyor.databinding.HomeFragmentBinding
 
 
-import com.datapacker.surveyor.model.HomeButton
-import com.datapacker.surveyor.model.HomeButtonType
+import com.datapacker.surveyor.ui.survey.SurveyFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), HomeButtonInterface {
     private var _binding: HomeFragmentBinding? = null
-
+    private   val TAG = "HomeFragment"
     private val bd get() = _binding!!
     companion object {
         fun newInstance() = HomeFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,22 +33,28 @@ class HomeFragment : Fragment() {
         _binding = HomeFragmentBinding.inflate(layoutInflater)
         val view = bd.root
 
+        viewModel= ViewModelProvider(requireActivity()).get( HomeViewModel::class.java)
+
+
         bd.homeButtonRecycler.setHasFixedSize(true)
         bd.homeButtonRecycler.layoutManager = GridLayoutManager(requireActivity(),2)
-        var listofButtons: MutableList<HomeButton> = ArrayList()
-
-        listofButtons.add(HomeButton("নতুন ফর্ম",resources.getDrawable(R.drawable.logo_newsurvey),HomeButtonType.NEW_SURVEY))
-        listofButtons.add(HomeButton("ফর্ম পাঠান",resources.getDrawable(R.drawable.logo_uploadsurvey),HomeButtonType.NEW_SURVEY))
-        listofButtons.add(HomeButton("এডিট ফর্ম",resources.getDrawable(R.drawable.logo_editsurvey),HomeButtonType.NEW_SURVEY))
-        listofButtons.add(HomeButton("পাঠানো ফর্ম",resources.getDrawable(R.drawable.logo_sentform),HomeButtonType.NEW_SURVEY))
-        listofButtons.add(HomeButton("ইন্সট্রাকশন",resources.getDrawable(R.drawable.logo_instruction),HomeButtonType.NEW_SURVEY))
-        listofButtons.add(HomeButton("লগ আউট",resources.getDrawable(R.drawable.logo_logout),HomeButtonType.NEW_SURVEY))
-        var adapter = HomeBtnAdapter(listofButtons,requireActivity())
+        var listofButtons: MutableList<HomeButton> = ArrayList(Constant.getHomeButtonList(requireActivity()))
+        var adapter = HomeBtnAdapter(listofButtons,requireActivity(),this)
         bd.homeButtonRecycler.adapter= adapter
 
-
-
         return view
+
+
+    }
+
+    override fun onHomeButtonsclicked(homeButton: HomeButton) {
+         if (homeButton.type== HomeButtonType.NEW_SURVEY){
+             requireActivity().supportFragmentManager.beginTransaction()
+                 .replace(R.id.container, SurveyFragment.newInstance())
+                 .commitNow()
+         }else if (homeButton.type== HomeButtonType.EDIT_SURVEY){
+
+         }
     }
 
 

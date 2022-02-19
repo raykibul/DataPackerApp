@@ -1,22 +1,18 @@
 package com.datapacker.surveyor.data
 
-import com.datapacker.surveyor.model.LoginBody
-import com.datapacker.surveyor.model.RetrofitInstance
-import com.datapacker.surveyor.model.Surveyor
-import com.datapacker.surveyor.model.Token
+import com.datapacker.surveyor.data.model.*
 
 class Repository {
 
-    suspend fun parseToken(loginBody:LoginBody):retrofit2.Response<Token> {
-       return RetrofitInstance.API.parseTokenApi(loginBody);
+    suspend fun parseToken(loginBody: LoginBody):retrofit2.Response<Token> {
+       return RetrofitInstance.API.ParseApiToken(loginBody);
     }
     suspend fun loadSurveyor():retrofit2.Response<Surveyor> {
-        return RetrofitInstance.API.loadSurveyorApi( );
+        return RetrofitInstance.API.LoadSurveyor();
     }
-
-
-
-
+    suspend fun LoadSurvey():retrofit2.Response<List<Survey>> {
+        return RetrofitInstance.API.LoadSurvey();
+    }
    /* suspend fun sendData(username:String,password:String,amount:String,sender:String,transaction:String,gateway:String): Call<ResponseBody> {
         return RetrofitInstance.ADMIN_API.sendRequest(username,password,amount,transaction,sender,Constants.PACKGENAME,gateway)
     }

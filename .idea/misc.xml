@@ -7,12 +7,16 @@
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/drawable/rounded_corner.xml" value="0.2942708333333333" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/available_question.xml" value="0.24561403508771928" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/custom_alert.xml" value="0.33229166666666665" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/home_button_layout.xml" value="0.33" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/home_fragment.xml" value="0.32916666666666666" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/loading_screen.xml" value="0.3109375" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/main_activity.xml" value="0.33125" />
         <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/main_fragment.xml" value="0.33125" />
+        <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/question_laytout.xml" value="0.2609375" />
+        <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/suvey_fragment.xml" value="0.2609375" />
+        <entry key="..\:/0_Android Project/DataPackerApp/app/src/main/res/layout/viewpagerlayout.xml" value="0.2" />
       </map>
     </option>
   </component>

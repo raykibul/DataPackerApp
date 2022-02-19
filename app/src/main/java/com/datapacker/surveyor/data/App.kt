@@ -1,9 +1,6 @@
 package com.datapacker.surveyor.data
 
 import android.app.Application
-import android.os.Build
-import android.app.NotificationChannel
-import android.app.NotificationManager
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

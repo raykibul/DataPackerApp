@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.datapacker.surveyor.data.Repository
-import com.datapacker.surveyor.model.LoadingOrAlert
-import com.datapacker.surveyor.model.LoginBody
-import com.datapacker.surveyor.model.Surveyor
-import com.datapacker.surveyor.model.Token
+import com.datapacker.surveyor.data.model.*
+import com.google.gson.Gson
 
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -30,6 +28,7 @@ class LoginViewModel( ) : ViewModel() {
 
        }
    }
+
 
 
     fun loadSurveyor(){

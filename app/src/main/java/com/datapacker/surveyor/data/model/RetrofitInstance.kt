@@ -1,4 +1,4 @@
-package com.datapacker.surveyor.model
+package com.datapacker.surveyor.data.model
 
 import com.datapacker.surveyor.data.Api
 import com.google.gson.GsonBuilder

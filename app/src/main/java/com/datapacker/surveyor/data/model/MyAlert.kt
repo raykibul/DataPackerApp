@@ -1,4 +1,4 @@
-package com.datapacker.surveyor.model
+package com.datapacker.surveyor.data.model
 
 import android.app.Dialog
 import android.content.Context
@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.contentValuesOf
 import com.airbnb.lottie.LottieAnimationView
 import com.datapacker.surveyor.R
 
@@ -17,7 +15,7 @@ class MyAlert {
 
     companion object{
 
-        fun createAlert(title: String,msg:String,context: Context,type:AlertType):Dialog{
+        fun createAlert(title: String,msg:String,context: Context,type: AlertType):Dialog{
 
             var alert : Dialog = Dialog(context)
             alert.setContentView(R.layout.custom_alert)
@@ -33,11 +31,11 @@ class MyAlert {
                 tv_title.setTextColor(context.resources.getColor(R.color.success))
                 animation.setAnimation(R.raw.alert_success)
                 tv_msg.setTextColor(context.resources.getColor(R.color.purple_700))
-            }else if (type==AlertType.ERROR){
+            }else if (type== AlertType.ERROR){
                 tv_title.setTextColor(context.resources.getColor(R.color.design_default_color_error))
                 tv_msg.setTextColor(context.resources.getColor(R.color.purple_700))
                 animation.setAnimation(R.raw.cancell_alert)
-            }else if (type==AlertType.FAILED){
+            }else if (type== AlertType.FAILED){
                 tv_title.setTextColor(context.resources.getColor(R.color.failed))
                 tv_msg.setTextColor(context.resources.getColor(R.color.purple_700))
                 animation.setAnimation(R.raw.cancelled_man)
@@ -53,15 +51,15 @@ class MyAlert {
 
 
         fun error( title:String,msg:String, context:Context){
-           var  dialog : Dialog = createAlert(title,msg,context,AlertType.ERROR)
+           var  dialog : Dialog = createAlert(title,msg,context, AlertType.ERROR)
             dialog.show()
         }
         fun success( title:String, msg:String,  context:Context){
-            var  dialog : Dialog = createAlert(title,msg,context,AlertType.SUCCESS)
+            var  dialog : Dialog = createAlert(title,msg,context, AlertType.SUCCESS)
             dialog.show()
         }
         fun failed( title:String, msg:String,  context:Context){
-            var  dialog : Dialog = createAlert(title,msg,context,AlertType.FAILED)
+            var  dialog : Dialog = createAlert(title,msg,context, AlertType.FAILED)
             dialog.show()
         }
     }

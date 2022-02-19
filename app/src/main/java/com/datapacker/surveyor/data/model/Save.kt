@@ -1,8 +1,7 @@
-package com.datapacker.surveyor.model
+package com.datapacker.surveyor.data.model
 
 import android.content.Context
 import android.content.SharedPreferences
-import java.util.prefs.Preferences
 
 class Save {
 
